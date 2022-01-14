@@ -3,6 +3,7 @@ import React from "react";
 import { PageHeader } from "../../@ui/pageHeader";
 import { TweetT } from "../../types/graphql-utils";
 import TweetForm from "./tweetForm";
+import TimeLine from "./timeline";
 
 export const TWEETS_QUERY = gql`
   query TweetsQuery {
@@ -38,6 +39,7 @@ const HomePage = () => {
     <div>
       <PageHeader title="Home" />
       <TweetForm afterTweetCreated={afterTweetCreated} />
+      <TimeLine {...queryResult} />
     </div>
   );
 };
