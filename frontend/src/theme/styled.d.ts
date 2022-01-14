@@ -4,11 +4,26 @@ import "styled-components";
 // and extend them!
 declare module "styled-components" {
   export interface DefaultTheme {
-    borderRadius: string;
-
     colors: {
-      main: string;
-      secondary: string;
+      // bg
+      bg: string;
+      // blue
+      primary: string;
+      // text
+      textPri: string;
+      textSec: string;
+      // border colors
+      inputBorder: string;
+      hrBorder: string;
+      // hover colors
+      hover: string;
+      tweetHover: string;
+      priHover: string;
+      iconHover: string;
+
+      // transparent
+      transparent: string;
     };
+    transition: string;
   }
 }
