@@ -4,7 +4,8 @@ export const GlobalStyle = createGlobalStyle`
   *, html {
     margin: 0;
     padding: 0;
-    font-size: 15px;
+    font-size: ${({ theme }) => theme.font.size.md};
+    font-weight: ${({ theme }) => theme.font.weight.normal};
     box-sizing: border-box;
   }
   body {

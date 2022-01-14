@@ -19,6 +19,21 @@ const myTheme: DefaultTheme = {
     transparent: "rgba(0, 0, 0, 0)",
   },
   transition: "all 0.5s ease",
+  borderRadius: "9999px",
+  font: {
+    size: {
+      h1: "64px",
+      h2: "31px",
+      lg: "20px",
+      md: "15px",
+      sm: "13px",
+    },
+    weight: {
+      bold: "700",
+      normal: "400",
+      light: "200",
+    },
+  },
 };
 
 export { myTheme };

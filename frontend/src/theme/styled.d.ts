@@ -25,5 +25,20 @@ declare module "styled-components" {
       transparent: string;
     };
     transition: string;
+    borderRadius: string;
+    font: {
+      size: {
+        h1: string;
+        h2: string;
+        lg: string;
+        md: string;
+        sm: string;
+      };
+      weight: {
+        bold: string;
+        normal: string;
+        light: string;
+      };
+    };
   }
 }
