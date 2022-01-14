@@ -21,7 +21,7 @@ const UserSchema = new Schema<IUser>({
   },
   password: { type: String, minlength: 4 },
   tweets: [{ type: Schema.Types.ObjectId, ref: "Tweet" }],
-  created: { type: Date, default: Date.now() },
+  created: { type: Date, default: Date.now },
 });
 
 export default mongoose.model<IUser>("User", UserSchema);

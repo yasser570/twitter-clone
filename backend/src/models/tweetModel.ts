@@ -12,7 +12,7 @@ export interface ITweet {
 const TweetSchema = new Schema<ITweet>({
   user: { type: Schema.Types.ObjectId, ref: "User" },
   body: { type: String, maxlength: 280 },
-  created: { type: Date, default: Date.now() },
+  created: { type: Date, default: Date.now },
 });
 
 export default mongoose.model<ITweet>("Tweet", TweetSchema);

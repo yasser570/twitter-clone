@@ -5,6 +5,9 @@ const SButton = styled.button`
   cursor: pointer;
   border: none;
   background-color: transparent;
+  &:focus {
+    outline: none;
+  }
 `;
 
 const Container = styled.div<{ $inverted?: boolean }>`
@@ -12,7 +15,7 @@ const Container = styled.div<{ $inverted?: boolean }>`
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  border-radius: 9999px;
+  border-radius: ${({ theme }) => theme.borderRadius};
   padding: 12px;
   width: 100%;
   max-width: 100%;
@@ -32,7 +35,8 @@ const Container = styled.div<{ $inverted?: boolean }>`
 
 const ButtonText = styled.span`
   color: inherit;
-  font-size: 20px;
+  font-size: ${({ theme }) => theme.font.size.lg};
+  font-weight: ${({ theme }) => theme.font.weight.bold};
   margin: 0 16px;
 `;
 

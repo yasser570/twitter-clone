@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { Button } from "../@ui/button";
 import { LogoIcon } from "../@ui/icons/logoIcon";
+import { UserT } from "../types/graphql-utils";
 
 const CURRENT_USER_QUERY = gql`
   query CurrentUserQuery {
@@ -54,12 +55,6 @@ type CurrentUserT = {
   currentUser: UserT;
 };
 
-type UserT = {
-  _id: string;
-  name: string;
-  username: string;
-};
-
 const Center = styled.div`
   display: flex;
   width: 100%;
@@ -70,23 +65,25 @@ const Center = styled.div`
 const Columns = styled.div``;
 
 const H1 = styled.h1`
-  font-size: 64px;
-  font-weight: 700;
+  font-size: ${({ theme }) => theme.font.size.h1};
+  font-weight: ${({ theme }) => theme.font.weight.bold};
   color: ${({ theme }) => theme.colors.textPri};
   margin-bottom: 48px;
   margin-top: 48px;
 `;
 
 const H2 = styled.h2`
-  font-size: 31px;
+  font-size: ${({ theme }) => theme.font.size.h2};
+  font-weight: ${({ theme }) => theme.font.weight.bold};
   margin-bottom: 32px;
-  font-weight: 700;
   color: ${({ theme }) => theme.colors.textPri};
 `;
 
 const H3 = styled.h3`
   margin-top: 32px;
   margin-bottom: 16px;
+  font-size: ${({ theme }) => theme.font.size.lg};
+  font-weight: ${({ theme }) => theme.font.weight.bold};
 `;
 
 const Input = styled.input`
@@ -135,7 +132,7 @@ const LoginPage = () => {
     if (data?.currentUser?._id) {
       navigate("/home", { replace: true });
     }
-  }, [data]);
+  }, [data, navigate]);
 
   const resetForm = () => {
     setName("");

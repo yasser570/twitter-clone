@@ -12,9 +12,8 @@ export const resolvers = {
     tweets: async () => {
       const tweets = await TweetModel.find()
         .populate("user")
-        .sort({ createdAt: -1 })
+        .sort({ created: -1 })
         .catch((err) => console.error(err));
-
       return tweets;
     },
     tweet: async (_: any, { id }: { id: string }) => {
@@ -84,11 +83,14 @@ export const resolvers = {
         user: req.session.userId,
       });
 
-      await tweet.save().catch((err) => {
+      const newTweet = await tweet.save().catch((err) => {
         console.error(err);
         throw new Error("something went wrong");
       });
-      return tweet;
+
+      const newTweetWithUser = await newTweet.populate("user");
+
+      return newTweetWithUser;
     },
   },
 };
