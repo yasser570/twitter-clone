@@ -1,6 +1,7 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
 import styled from "styled-components";
+import { breakpoints } from "../theme/media";
 import LeftSidebar from "./leftSidebar";
 import RightSidebar from "./rightSidebar";
 
@@ -23,6 +24,17 @@ const LeftSidebarContainer = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
+  ${breakpoints.down("lg")} {
+    flex-basis: 120px;
+  }
+  ${breakpoints.down("md")} {
+    flex-basis: 150px;
+    flex-shrink: 0;
+  }
+  ${breakpoints.down("sm")} {
+    flex-basis: 70px;
+    flex-shrink: 0;
+  }
 `;
 
 const Main = styled.main`
@@ -48,13 +60,19 @@ const PageContainer = styled.div`
 
 const RightSidebarContainer = styled.div`
   position: sticky;
-  top: calc(100% - 850px);
+  top: calc(100% - 730px);
   height: 100%;
   flex-basis: 450px;
   flex-grow: 0;
   flex-shrink: 1;
   display: flex;
   flex-direction: row;
+  ${breakpoints.down("lg")} {
+    flex-basis: 400px;
+  }
+  ${breakpoints.down("md")} {
+    display: none;
+  }
 `;
 
 const Layout = () => (

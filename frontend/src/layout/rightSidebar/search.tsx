@@ -19,6 +19,7 @@ const Container = styled.div`
   height: 53px;
   background-color: ${({ theme }) => theme.colors.bg};
   padding-bottom: 12px;
+  z-index: 5;
 `;
 
 const SearchContainer = styled.div`

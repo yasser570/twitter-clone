@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { breakpoints } from "../../theme/media";
 import { Logo } from "./logo";
 import {
   ExploreIcon,
@@ -19,6 +20,12 @@ const Container = styled.div`
   flex-direction: column;
   overflow: auto;
   padding-right: 12px;
+  ${breakpoints.down("lg")} {
+    width: auto;
+  }
+  ${breakpoints.down("sm")} {
+    padding-right: 6px;
+  }
 `;
 
 const navItems = [

@@ -11,6 +11,8 @@ const SNLink = styled(NLink)`
 const Container = styled.div`
   display: flex;
   flex-direction: row;
+  align-items: center;
+  justify-content: center;
   border-radius: ${({ theme }) => theme.borderRadius};
   padding: 12px;
   width: fit-content;
@@ -20,10 +22,19 @@ const Container = styled.div`
   &:hover {
     background-color: ${({ theme }) => theme.colors.hover};
   }
+  ${SNLink}:hover & {
+    background-color: ${({ theme }) => theme.colors.hover};
+  }
 `;
 
 const IconContainer = styled.div`
   color: ${({ theme }) => theme.colors.textPri};
+  ${breakpoints.down("lg")} {
+    width: calc(39px - 12px);
+    max-width: calc(39px - 12px);
+    height: calc(39px - 12px);
+    max-width: calc(39px - 12px);
+  }
 `;
 
 const TextContainer = styled.span<{ $active: boolean }>`
@@ -32,7 +43,7 @@ const TextContainer = styled.span<{ $active: boolean }>`
   font-weight: ${({ theme, $active }) =>
     $active ? theme.font.weight.bold : theme.font.weight.normal};
   margin: 0 16px;
-  ${breakpoints.down("md")} {
+  ${breakpoints.down("lg")} {
     display: none;
   }
 `;

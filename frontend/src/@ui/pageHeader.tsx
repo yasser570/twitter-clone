@@ -10,6 +10,7 @@ const Container = styled.div`
   display: flex;
   align-items: center;
   background-color: ${({ theme }) => theme.colors.bg};
+  z-index: 5;
 `;
 
 const Title = styled.span`

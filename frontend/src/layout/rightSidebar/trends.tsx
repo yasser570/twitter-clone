@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { CustomIcon } from "../../@ui/customIcon";
 
 const Container = styled.div`
   margin-bottom: 12px;
@@ -54,6 +55,8 @@ const TIHeader = styled.div`
   display: flex;
   width: 100%;
   justify-content: space-between;
+  height: 13px;
+  z-index: 1;
 `;
 
 const SmallSpan = styled.span`
@@ -62,32 +65,6 @@ const SmallSpan = styled.span`
   font-weight: ${({ theme }) => theme.font.weight.normal};
   color: ${({ theme }) => theme.colors.textSec};
 `;
-
-const SvgContainer = styled.div`
-  width: 36px;
-  height: 36px;
-  padding: 8px;
-
-  background-color: ${({ theme }) => theme.colors.transparent};
-  border-radius: ${({ theme }) => theme.borderRadius};
-  transition: ${({ theme }) => theme.transition};
-
-  &:hover {
-    background-color: ${({ theme }) => theme.colors.iconHover};
-  }
-`;
-
-const StyledSvg = styled.svg`
-  width: 20px;
-  height: 20px;
-  color: ${({ theme }) => theme.colors.textSec};
-
-  fill: currentColor;
-  ${SvgContainer}:hover & {
-    color: ${({ theme }) => theme.colors.primary};
-  }
-`;
-
 const TITitle = styled.span`
   display: block;
   font-size: ${({ theme }) => theme.font.size.lg};
@@ -102,15 +79,22 @@ const TrindItem = (trind: Trind) => {
     <TIContainer>
       <TIHeader>
         <SmallSpan>{`Trending in ${trind.trindingIn}`}</SmallSpan>
-        <SvgContainer>
-          <StyledSvg viewBox="0 0 24 24" aria-hidden="true">
-            <g>
-              <circle cx="5" cy="12" r="2"></circle>
-              <circle cx="12" cy="12" r="2"></circle>
-              <circle cx="19" cy="12" r="2"></circle>
-            </g>
-          </StyledSvg>
-        </SvgContainer>
+        <CustomIcon
+          type="button"
+          fill="ter"
+          fillOnHover="pri"
+          label="More"
+          onClick={() => console.log("...")}
+          icon={
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <g>
+                <circle cx="5" cy="12" r="2"></circle>
+                <circle cx="12" cy="12" r="2"></circle>
+                <circle cx="19" cy="12" r="2"></circle>
+              </g>
+            </svg>
+          }
+        />
       </TIHeader>
       <TITitle>{trind.title}</TITitle>
       <SmallSpan>{`${trind.tweetsNum} Tweets`}</SmallSpan>
