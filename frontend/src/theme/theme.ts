@@ -3,6 +3,7 @@ import { DefaultTheme } from "styled-components";
 const myTheme: DefaultTheme = {
   colors: {
     bg: "rgb(255 255 255)",
+    bg2: "rgb(247, 249, 249)",
     primary: "rgb(29, 155, 240)", // blue
     // text
     textPri: "rgb(15, 20, 25)",

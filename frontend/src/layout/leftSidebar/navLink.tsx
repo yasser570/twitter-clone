@@ -41,13 +41,14 @@ const NavLink: React.FC<{
   to: NavLinkProps["to"];
   icon: JSX.Element;
 }> = ({ to, icon, children }) => {
-  const active = false;
   return (
     <SNLink to={to}>
-      <Container>
-        <IconContainer>{icon}</IconContainer>
-        <TextContainer $active={active}>{children}</TextContainer>
-      </Container>
+      {({ isActive }) => (
+        <Container>
+          <IconContainer>{icon}</IconContainer>
+          <TextContainer $active={isActive}>{children}</TextContainer>
+        </Container>
+      )}
     </SNLink>
   );
 };

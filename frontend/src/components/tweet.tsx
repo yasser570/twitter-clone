@@ -39,8 +39,6 @@ const dateFromNow = (date: string) => {
 };
 
 const Container = styled.div`
-  padding-left: 16px;
-  padding-right: 16px;
   width: 100%;
   padding: 0 16px;
   display: flex;

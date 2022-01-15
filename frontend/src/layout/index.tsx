@@ -2,6 +2,7 @@ import React from "react";
 import { Outlet } from "react-router-dom";
 import styled from "styled-components";
 import LeftSidebar from "./leftSidebar";
+import RightSidebar from "./rightSidebar";
 
 const Container = styled.div`
   width: 100%;
@@ -45,8 +46,9 @@ const PageContainer = styled.div`
   border-right: 1px solid ${({ theme }) => theme.colors.hrBorder};
 `;
 
-const RightSidebar = styled.div`
-  /* width: 450px; */
+const RightSidebarContainer = styled.div`
+  position: sticky;
+  top: calc(100% - 850px);
   height: 100%;
   flex-basis: 450px;
   flex-grow: 0;
@@ -64,16 +66,9 @@ const Layout = () => (
       <PageContainer>
         <Outlet />
       </PageContainer>
-      <RightSidebar>
-        <div>
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Illo
-          voluptate impedit consequatur deleniti, sequi expedita sunt fugiat
-          praesentium rem id voluptates natus accusamus inventore iure, nihil
-          quibusdam culpa consectetur eum ipsum odit odio nesciunt placeat.
-          Voluptate, corporis! Mollitia adipisci, beatae deserunt facere itaque
-          aliquid consectetur minus rerum nulla veniam commodi!
-        </div>
-      </RightSidebar>
+      <RightSidebarContainer>
+        <RightSidebar />
+      </RightSidebarContainer>
     </Main>
   </Container>
 );
