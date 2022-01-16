@@ -1,6 +1,8 @@
 import TweetModel from "./models/tweetModel";
 import UserModel from "./models/userModel";
 import { Context } from "./types/graphql-utils";
+import mongoose from "mongoose";
+import { UserInputError } from "apollo-server-core";
 
 export const resolvers = {
   Query: {
@@ -38,13 +40,45 @@ export const resolvers = {
       },
       { req }: Context
     ) => {
+      // chick if the
+
       const user = new UserModel({
         username,
         name,
         password,
       });
-      await user.save().catch((err) => {
-        console.error(err);
+
+      await user.save().catch((error) => {
+        if (error instanceof mongoose.Error.ValidationError) {
+          if (error.errors["name"]) {
+            throw new UserInputError(error.errors["name"].message, {
+              name: "name",
+              inputName: "name",
+            });
+          }
+
+          if (error.errors["username"]) {
+            throw new UserInputError(error.errors["username"].message, {
+              name: "username",
+              inputName: "username",
+            });
+          }
+
+          if (error.errors["password"]) {
+            throw new UserInputError(error.errors["password"].message, {
+              name: "password",
+              inputName: "password",
+            });
+          }
+        }
+        // mongo error
+        else if (error.code === 11000) {
+          throw new UserInputError("username is already taken!", {
+            name: "username",
+            inputName: "username",
+          });
+        }
+
         throw new Error("something went wrong");
       });
 
@@ -63,11 +97,17 @@ export const resolvers = {
       });
 
       if (!user) {
-        throw new Error("user is not found");
+        throw new UserInputError("user is not found!", {
+          name: "username",
+          inputName: "username",
+        });
       }
 
       if (user.password !== password) {
-        throw new Error("wrong password");
+        throw new UserInputError("wrong password!", {
+          name: "password",
+          inputName: "password",
+        });
       }
 
       req.session.userId = user._id;

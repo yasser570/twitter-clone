@@ -12,14 +12,21 @@ export interface IUser {
 }
 
 const UserSchema = new Schema<IUser>({
-  name: { type: String, maxlength: 50, minlength: 4 },
+  name: {
+    type: String,
+    maxlength: 50,
+    minlength: [4, "name must be at least 4 characters"],
+  },
   username: {
     type: String,
     maxlength: 15,
     minlength: [4, "username must be at least 4 characters"],
     unique: true,
   },
-  password: { type: String, minlength: 4 },
+  password: {
+    type: String,
+    minlength: [4, "password must be at least 4 characters"],
+  },
   tweets: [{ type: Schema.Types.ObjectId, ref: "Tweet" }],
   created: { type: Date, default: Date.now },
 });

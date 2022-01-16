@@ -24,6 +24,7 @@ declare module "styled-components" {
 
       // transparent
       transparent: string;
+      error: string;
     };
     transition: string;
     borderRadius: string;

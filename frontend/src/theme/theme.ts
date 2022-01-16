@@ -18,6 +18,7 @@ const myTheme: DefaultTheme = {
     iconHover: "rgba(29, 155, 240, 0.1)",
     // transparent
     transparent: "rgba(0, 0, 0, 0)",
+    error: "red",
   },
   transition: "all 0.5s ease",
   borderRadius: "9999px",
